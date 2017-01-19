@@ -75,6 +75,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversion.cs" />
+    <Compile Include="ConversionGroupListAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +94,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\pager_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\page_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\listview_row.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

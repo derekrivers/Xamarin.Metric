@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="30dp"
+    android:minHeight="30dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp">
+  <TextView
+      android:text="Metric"
+      android:layout_width="match_parent"
+      android:layout_weight="50"
+      android:layout_height="wrap_content"
+      android:id="@+id/txtMetric" />
+  <TextView
+      android:text="Conversion"
+      android:layout_width="match_parent"
+      android:layout_weight="50"
+      android:layout_height="wrap_content"
+      android:id="@+id/txtConversion" />
+</LinearLayout>

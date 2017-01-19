@@ -4,6 +4,9 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V4.View;
+using Java.Lang;
+using System;
+using Android.Content;
 
 namespace Metric
 {
@@ -15,7 +18,6 @@ namespace Metric
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
-            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
             return inflater.Inflate(Resource.Layout.fragment_sample, container, false);
         }
@@ -35,12 +37,10 @@ namespace Metric
 
             public SamplePagerAdapter() : base()
             {
-                items.Add("Xamarin");
-                items.Add("Android");
-                items.Add("Tutorial");
-                items.Add("Part");
-                items.Add("12");
-                items.Add("Hooray");
+                items.Add("Cups");
+                items.Add("Ounces");
+                items.Add("Litres");
+                items.Add("Cans");
             }
 
             public override int Count
@@ -55,16 +55,38 @@ namespace Metric
 
             public override Java.Lang.Object InstantiateItem(ViewGroup container, int position)
             {
-                View view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.pager_item, container, false);
+                View view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.page_item, container, false);
                 container.AddView(view);
 
-                TextView txtTitle = view.FindViewById<TextView>(Resource.Id.item_title);
-                int pos = position + 1;
+                ListView listView = view.FindViewById<ListView>(Resource.Id.listView);
 
-                txtTitle.Text = pos.ToString();
+                var dataService = new ConversionGroupService();
+
+                var group = dataService.GetById(1);
+
+                if(group != null)
+                {
+                    ConversionGroupListAdapter adapter = new ConversionGroupListAdapter(view.Context, group.Conversions);
+
+                    listView.Adapter = adapter;
+                }
+
 
                 return view;
             }
+
+            //public override Java.Lang.Object InstantiateItem(ViewGroup container, int position)
+            //{
+            //    View view = LayoutInflater.From(container.Context).Inflate(Resource.Layout.pager_item, container, false);
+            //    container.AddView(view);
+
+            //    TextView txtTitle = view.FindViewById<TextView>(Resource.Id.item_title);
+            //    int pos = position + 1;
+
+            //    txtTitle.Text = pos.ToString();
+
+            //    return view;
+            //}
 
             public string GetHeaderTitle(int position)
             {
